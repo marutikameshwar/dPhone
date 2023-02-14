@@ -23,10 +23,14 @@ public class UserServiceImplementation {
 
     public ResponseEntity<UserBean> addUsers(UserBean userBean) {
         UserEntity userEntity=new UserEntity();
-        BeanUtils.copyProperties(userBean , userEntity);
-        userDao.save(userEntity);
-        System.out.println("record Saved");
-        return new ResponseEntity<UserBean>(userBean, HttpStatus.OK);
+        try{
+            BeanUtils.copyProperties(userBean , userEntity);
+            userDao.save(userEntity);
+            System.out.println("record Saved");
+            return new ResponseEntity<UserBean>(userBean, HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<UserBean>(userBean,HttpStatus.CONFLICT);
+        }
     }
 
     public List<UserEntity> allRecords() {
