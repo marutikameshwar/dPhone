@@ -27,6 +27,7 @@ public class UserServiceImplementation {
         String referalCode = ReferalCodeGenerator.code(8);
         try {
             userBean.setReferralCode(referalCode);
+            userBean.setUserPoints(0);
             BeanUtils.copyProperties(userBean , userEntity);
             userDao.save(userEntity);
             System.out.println("record Saved");
