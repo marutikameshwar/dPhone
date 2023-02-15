@@ -11,6 +11,7 @@ import com.bajaj.dao.UserDao;
 import com.bajaj.entity.UserEntity;
 
 import java.util.List;
+import com.bajaj.util.ReferalCodeGenerator;
 
 @Service
 public class UserServiceImplementation {
@@ -22,8 +23,11 @@ public class UserServiceImplementation {
     }
 
     public ResponseEntity<UserBean> addUsers(UserBean userBean) {
-        UserEntity userEntity=new UserEntity();
-        try{
+        UserEntity userEntity = new UserEntity();
+        String referalCode = ReferalCodeGenerator.code(8);
+        try {
+            userBean.setReferralCode(referalCode);
+            userBean.setUserPoints(0);
             BeanUtils.copyProperties(userBean , userEntity);
             userDao.save(userEntity);
             System.out.println("record Saved");
