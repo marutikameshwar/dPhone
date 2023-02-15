@@ -10,6 +10,7 @@ import com.bajaj.beans.UserBean;
 import com.bajaj.dao.UserDao;
 import com.bajaj.entity.UserEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.bajaj.util.ReferalCodeGenerator;
 
@@ -37,7 +38,17 @@ public class UserServiceImplementation {
         }
     }
 
-    public List<UserEntity> allRecords() {
-        return userDao.findAll();
+    public List<UserBean> allRecords() {
+
+        //return userDao.findAll()
+        List <UserEntity> allUsers=userDao.findAll();
+        List<UserBean> allUserBean=new ArrayList<UserBean>();
+        for( UserEntity u: allUsers)
+        {
+            UserBean bean=new UserBean();
+            BeanUtils.copyProperties(u,bean);
+            allUserBean.add(bean);
+        }
+        return allUserBean;
     }
 }

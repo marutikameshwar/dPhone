@@ -29,6 +29,10 @@ public class UserBean {
         this.phoneNumber = phoneNumber;
     }
 
+    public UserBean() {
+
+    }
+
     public int getUserId() {
         return userId;
     }

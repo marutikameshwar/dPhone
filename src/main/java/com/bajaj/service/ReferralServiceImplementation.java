@@ -21,4 +21,19 @@ public class ReferralServiceImplementation {
         return new ResponseEntity<String>("user added Successfully",HttpStatus.OK);
 
     }
+    public ResponseEntity <ReferralBean> editReferral(ReferralBean referralBean)
+    {
+        ReferralEntity referralEntity = referralDao.findById(referralBean.getReferrerId());
+        referralEntity.setReferralName(referralBean.getReferralName());
+        referralEntity.setReferralEmail(referralBean.getReferralEmail());
+        referralEntity.setReferralPhoneNumber(referralBean.getReferralPhoneNumber());
+        ReferralBean bean=new ReferralBean();
+        BeanUtils.copyProperties(referralEntity,bean);
+        return new ResponseEntity<ReferralBean>(bean, HttpStatus.OK);
+
+    }
+//    public ResponseEntity<List<ReferralBean>> allReferral()
+//    {
+//
+//    }
 }

@@ -23,8 +23,8 @@ public class UserController {
         return userServiceImplementation.addUsers(userBean);
     }
     @GetMapping("allusers")
-    public List<UserEntity> allRecords(){
-        List<UserEntity> msg=userServiceImplementation.allRecords();
+    public List<UserBean> allRecords(){
+        List<UserBean> msg=userServiceImplementation.allRecords();
         return msg;
     }
     @RequestMapping("*")
