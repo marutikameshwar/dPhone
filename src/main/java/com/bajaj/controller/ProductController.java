@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bajaj.beans.ProductBean;
@@ -19,6 +20,12 @@ public class ProductController {
 	public ResponseEntity<List<ProductBean>> allProducts()
 	{
 		List<ProductBean> products=productService.allProducts();
+		return new ResponseEntity<List<ProductBean>>(products,HttpStatus.OK);
+	}
+	@GetMapping("/products/{id}")
+	public ResponseEntity<List<ProductBean>> productById(@PathVariable("id") int productId)
+	{
+		List<ProductBean> products=productService.productById(productId);
 		return new ResponseEntity<List<ProductBean>>(products,HttpStatus.OK);
 	}
 

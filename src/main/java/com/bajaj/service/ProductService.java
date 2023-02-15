@@ -22,11 +22,21 @@ public class ProductService {
         for( ProductEntity p: products)
         {
             ProductBean bean=new ProductBean();
-            BeanUtils.copyProperties(products, bean);
+            BeanUtils.copyProperties(p, bean);
             productBean.add(bean);
         }
         return productBean;
-
-
+    }
+    public List<ProductBean>productById(int productId)
+    {
+        List <ProductEntity> products= productDao.findById(productId);
+        List<ProductBean> productBean=productBean=new ArrayList<>();
+        for(ProductEntity p: products)
+        {
+            ProductBean bean=new ProductBean();
+            BeanUtils.copyProperties(p,bean);
+            productBean.add(bean);
+        }
+        return productBean;
     }
 }
