@@ -3,12 +3,15 @@ package com.bajaj.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bajaj.dao.ProductDao;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bajaj.beans.ProductBean;
 import com.bajaj.entity.ProductEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductService {
     @Autowired
     public ProductDao productDao;
