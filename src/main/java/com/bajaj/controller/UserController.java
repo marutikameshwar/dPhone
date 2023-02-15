@@ -16,11 +16,11 @@ public class UserController {
     @Autowired
     private UserServiceImplementation userServiceImplementation;
 
-    @PostMapping("addUsers")
+    @PostMapping("signup")
     public ResponseEntity<UserBean> addUsers(@RequestBody UserBean userBean){
         return userServiceImplementation.addUsers(userBean);
     }
-    @GetMapping("allUsers")
+    @GetMapping("allusers")
     public List<UserEntity> allRecords(){
         List<UserEntity> msg=userServiceImplementation.allRecords();
         return msg;
