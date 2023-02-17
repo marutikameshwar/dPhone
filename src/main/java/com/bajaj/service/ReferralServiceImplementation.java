@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ReferralServiceImplementation {
     @Autowired
@@ -32,8 +35,17 @@ public class ReferralServiceImplementation {
         return new ResponseEntity<ReferralBean>(bean, HttpStatus.OK);
 
     }
-//    public ResponseEntity<List<ReferralBean>> allReferral()
-//    {
-//
-//    }
+    public ResponseEntity <List<ReferralBean>> allReferral()
+    {
+        List<ReferralEntity> referralEntity = referralDao.allReferralById(6) ; // here we have to add the id of the user who has logged in
+        List<ReferralBean> referralBean=new ArrayList<>();
+        for(ReferralEntity r:referralEntity)
+        {
+            ReferralBean bean=new ReferralBean();
+            BeanUtils.copyProperties(r,bean);
+            referralBean.add(bean);
+        }
+
+        return new ResponseEntity <List<ReferralBean>>(referralBean,HttpStatus.OK);
+    }
 }
