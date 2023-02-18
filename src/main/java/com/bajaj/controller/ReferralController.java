@@ -15,7 +15,7 @@ import java.util.List;
 public class ReferralController {
     @Autowired
     private ReferralServiceImplementation referralServiceImplementation;
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<String> addReferral(@RequestBody ReferralBean referralBean)
     {
         return referralServiceImplementation.addReferral(referralBean);
