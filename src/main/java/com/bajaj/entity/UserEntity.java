@@ -2,13 +2,16 @@ package com.bajaj.entity;
 
 import java.sql.Date;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name="users")
 public class UserEntity {
     @Id
